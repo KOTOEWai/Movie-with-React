@@ -3,12 +3,20 @@
 import { useState } from "react";
 import { motion } from 'framer-motion';
 const Card = ({ cardWidth, movie }) => {
-    const { title,image,genres, originalLanguage,releaseDate,overview } = movie
+  const {
+    title = "No Title",
+    genres = [],
+    originalLanguage = "Unknown",
+    releaseDate = "Unknown",
+    overview = "No summary available",
+    image = "defaultImageURL.jpg", // Replace with default if undefined
+  } = movie
+  
     const [ showDesc,setShowDesc ] = useState(false)
   return (
     <div
     style={{ width: cardWidth }}
-      className="h-[650px] relative flex justify-center items-center shrink-0 p-2 group"
+      className="h-[550px] relative flex justify-center items-center shrink-0 p-2 group"
     >
       <motion.div 
        initial={{ opacity: 0 }}
@@ -20,7 +28,6 @@ const Card = ({ cardWidth, movie }) => {
 
         <div className="flex gap-x-2 items-center">
             {genres.map((genres,i)=>(
-                
                   <span key={i} className="text-lg font-semibold">{genres}</span>
             ))}
             
